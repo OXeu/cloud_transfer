@@ -65,13 +65,13 @@ class download():
 		"""
 		url = "https://pc.woozooo.com/fileup.php" # 请求的接口地址
 		with open(file_path, mode="r", encoding="utf8") as f: # 打开文件
-		file = {
-			"file": (filename, f.read()),# 引号的file是接口的字段，后面的是文件的名称、文件的内容
-			"task": "1",
-			"folder_id": -1,
-			"id":"WU_FILE_0",
-			"name": filename, # 如果接口中有其他字段也可以加上
-			} 
+			file = {
+				"file": (filename, f.read()),# 引号的file是接口的字段，后面的是文件的名称、文件的内容
+				"task": "1",
+				"folder_id": -1,
+				"id":"WU_FILE_0",
+				"name": filename, # 如果接口中有其他字段也可以加上
+				} 
 		encode_data = encode_multipart_formdata(file)
 		file_data = encode_data[0] 
 		# b'--c0c46a5929c2ce4c935c9cff85bf11d4\r\nContent-Disposition: form-data; name="file"; filename="1.txt"\r\nContent-Type: text/plain\r\n\r\n...........--c0c46a5929c2ce4c935c9cff85bf11d4--\r\n
