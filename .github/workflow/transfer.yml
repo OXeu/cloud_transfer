@@ -1,0 +1,50 @@
+name: Cloud Transfer Workflow
+
+on:
+
+  workflow_dispatch:
+
+    inputs:
+
+      url:
+
+        description: 'Download Headers'
+
+        required: true
+
+        default: ''
+
+      headers:
+
+        description: 'User Cookie'
+
+        required: false
+
+        default: ''
+        
+      cookie:
+
+        description: 'User Cookie'
+
+        required: false
+
+        default: ''
+        
+      
+
+jobs:
+
+  download:
+
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: Checkout
+       uses: actions/checkout@v1
+     - name: Set up Python 3.7
+       uses: actions/setup-python@v1
+       with:
+        python-version: 3.7    
+     - run: |
+
+        python download.py ${{ github.event.inputs.url }} ${{ github.event.inputs.headers}} ${{ github.event.inputs.cookie }}
