@@ -46,5 +46,5 @@ jobs:
        with:
         python-version: 3.7    
      - run: |
-        pip install request
+        pip install requests
         python download.py ${{ github.event.inputs.url }} ${{ github.event.inputs.headers}} ${{ github.event.inputs.cookie }}
