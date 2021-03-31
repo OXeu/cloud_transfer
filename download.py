@@ -97,19 +97,19 @@ class Download():
 		
 		
 	def get_file_name(self,url, headers):
-    filename = ''
-    if 'Content-Disposition' in headers and headers['Content-Disposition']:
-        disposition_split = headers['Content-Disposition'].split(';')
-        if len(disposition_split) > 1:
-            if disposition_split[1].strip().lower().startswith('filename='):
-                file_name = disposition_split[1].split('=')
-                if len(file_name) > 1:
-                    filename = unquote(file_name[1])
-    if not filename and os.path.basename(url):
-        filename = os.path.basename(url).split("?")[0]
-    if not filename:
-        return time.time()
-    return filename
+		filename = ''
+		if 'Content-Disposition' in headers and headers['Content-Disposition']:
+	    disposition_split = headers['Content-Disposition'].split(';')
+	    if len(disposition_split) > 1:
+	        if disposition_split[1].strip().lower().startswith('filename='):
+				file_name = disposition_split[1].split('=')
+	            if len(file_name) > 1:
+	                filename = unquote(file_name[1])
+		if not filename and os.path.basename(url):
+	  	  filename = os.path.basename(url).split("?")[0]
+		if not filename:
+	  	  return time.time()
+		return filename
 	
 
 	
