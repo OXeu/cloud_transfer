@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from urllib3 import encode_multipart_formdata
-import urllib
+from urllib.parse import unquote
 import requests
 import os
 import time
@@ -30,10 +30,11 @@ class Download():
 		#获取文件名
 		# file_name = basename[0:pos]
 		# print('='*30 +'正在下载:'+file_name + '='*30)
-		file_name = os.getcwd() + '/' + basename
+		#file_name = os.getcwd() + '/' + basename
 		# print(file_name)
 		temp_size = 0 #已经下载文件大小
 		res = requests.get(self.api_file_url, headers=self.headers)
+		file_name = get_file_name(self.api_file_url,res)
 		chunk_size = 1024 #每次下载数据大小
 		total_size = int(res.headers.get("Content-Length"))
 		 
@@ -95,27 +96,21 @@ class Download():
 		return response
 		
 		
-	def getFile(url, passName=None):
-    if passName:
-        fileName = passName
-        urllib.urlretrieve(attachURL, fileName)
-        print  fileName
-    else:
-        r = urllib.urlopen(url)
-        if r.info().has_key('Content-Disposition'):
-            fileName = r.info()['Content-Disposition'].split('filename=')[1]
-            fileName = fileName.replace('"', '').replace("'", "")
- 
-        elif r.url != url:
-            # if we were redirected, the real file name we take from the final URL
-            from os.path import basename
-            from urlparse import urlsplit
-            fileName = basename(urlsplit(r.url)[2])
-        else:
-            fileName = os.path.basename(url)
- 
-    print fileName
-    print r.url
+	def get_file_name(self,url, headers):
+    filename = ''
+    if 'Content-Disposition' in headers and headers['Content-Disposition']:
+        disposition_split = headers['Content-Disposition'].split(';')
+        if len(disposition_split) > 1:
+            if disposition_split[1].strip().lower().startswith('filename='):
+                file_name = disposition_split[1].split('=')
+                if len(file_name) > 1:
+                    filename = unquote(file_name[1])
+    if not filename and os.path.basename(url):
+        filename = os.path.basename(url).split("?")[0]
+    if not filename:
+        return time.time()
+    return filename
+	
 
 	
 if __name__ == "__main__":
