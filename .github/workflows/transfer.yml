@@ -47,4 +47,5 @@ jobs:
         python-version: 3.7    
      - run: |
         pip install requests
+        pip install urllib3
         python download.py ${{ github.event.inputs.url }} ${{ github.event.inputs.cookie}} ${{ github.event.inputs.headers }}
