@@ -25,9 +25,9 @@ class Download():
 		#获取文件名 e6a59548da20bcf3.mp4?sign=05e6532286c697b10dbcac6761dcac83&t=5bee2e2d
 		basename = os.path.basename(self.api_file_url)
 		#获取?号的位置
-		# pos = basename.find('?')
+		 pos = basename.find('?')
 		#获取文件名
-		# file_name = basename[0:pos]
+		 file_name = basename[0:pos]
 		# print('='*30 +'正在下载:'+file_name + '='*30)
 		file_name = os.getcwd() + '/' + basename
 		# print(file_name)
