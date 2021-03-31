@@ -31,4 +31,5 @@ jobs:
        run: |
         pip install requests
         pip install urllib3
+        pip install urllib
         python download.py ${{ github.event.inputs.url }}
