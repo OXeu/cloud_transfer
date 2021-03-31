@@ -91,9 +91,11 @@ class Download():
 		 
 	
 if __name__ == "__main__":
-		api_file_url = sys.argv[0]
-		headers = sys.argv[1]
+		api_file_url = sys.argv[1]
+		
 		cookie = sys.argv[2]
+		if len(sys.argv) = 4:
+			headers = sys.argv[3]
 		print(sys.argv)
 		segmentfault = Download(api_file_url,headers,cookie)
 		segmentfault.download()
