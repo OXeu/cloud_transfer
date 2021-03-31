@@ -96,7 +96,7 @@ class Download():
 		return response
 		
 		
-	def get_file_name(url, headers):
+	def get_file_name(self,url, headers):
 	    filename = ''
 	    if 'Content-Disposition' in headers and headers['Content-Disposition']:
 	        disposition_split = headers['Content-Disposition'].split(';')
