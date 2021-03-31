@@ -63,6 +63,7 @@ class Download():
 		:param filename：文件的名称
 		:param file_path：文件的绝对路径
 		"""
+		print("开始上传")
 		url = "https://pc.woozooo.com/fileup.php" # 请求的接口地址
 		with open(file_path, mode="r", encoding="utf8") as f: # 打开文件
 			file = {
@@ -72,6 +73,7 @@ class Download():
 				"id":"WU_FILE_0",
 				"name": filename, # 如果接口中有其他字段也可以加上
 				} 
+		print(filename)
 		encode_data = encode_multipart_formdata(file)
 		file_data = encode_data[0] 
 		# b'--c0c46a5929c2ce4c935c9cff85bf11d4\r\nContent-Disposition: form-data; name="file"; filename="1.txt"\r\nContent-Type: text/plain\r\n\r\n...........--c0c46a5929c2ce4c935c9cff85bf11d4--\r\n
@@ -87,6 +89,8 @@ class Download():
 		# 'Content-Type': 'multipart/form-data; boundary=c0c46a5929c2ce4c935c9cff85bf11d4'，这里上传文件用的是form-data,不能用json
 		
 		response = requests.post(url=url, headers=headers_from_data, data=file_data).json()
+		print("回执消息")
+		print(response)
 		return response
 		 
 	
