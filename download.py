@@ -54,7 +54,7 @@ class Download():
 			print()  # 避免上面\r 回车符，执行完后需要换行了，不然都在一行显示
 			end = time.time() #结束时间
 			print('全部下载完成!用时%.2f 秒' %(end-start))
-			self.upload2lanzous(basename,file_name,cookie)
+			self.upload2lanzous(basename,file_name,self.cookie)
 		else:
 			print(res.status_code)
 		 
