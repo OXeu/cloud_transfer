@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
- 
+from urllib3 import encode_multipart_formdata
 import requests
 import os
 import time
