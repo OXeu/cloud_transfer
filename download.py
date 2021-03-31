@@ -94,6 +94,7 @@ if __name__ == "__main__":
 		api_file_url = sys.argv[1]
 		
 		cookie = sys.argv[2]
+		headers = ""
 		if len(sys.argv) >= 4:
 			headers = sys.argv[3]
 		print(sys.argv)
