@@ -99,6 +99,6 @@ if __name__ == "__main__":
 		print(sys.argv)
 		response = requests.get(param_url)
 		print(response.text)
-		datas = json.load(response.text)
+		datas = json.loads(response.text)
 		segmentfault = Download(datas["url"],datas["headers"],datas["cookie"])
 		segmentfault.download()
