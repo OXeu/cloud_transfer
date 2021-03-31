@@ -58,7 +58,7 @@ class Download():
 		else:
 			print(res.status_code)
 		 
-	def upload2lanzous(filename, file_path,cookie):
+	def upload2lanzous(self,filename, file_path,cookie):
 		"""
 		:param filename：文件的名称
 		:param file_path：文件的绝对路径
