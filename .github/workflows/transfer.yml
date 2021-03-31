@@ -28,7 +28,7 @@ jobs:
        with:
         python-version: 3.7   
      - name: Run Download Script 
-     - run: |
+       run: |
         pip install requests
         pip install urllib3
         python download.py ${{ github.event.inputs.url }}
