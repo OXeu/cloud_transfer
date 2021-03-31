@@ -97,7 +97,7 @@ class Download():
 if __name__ == "__main__":
 		param_url = sys.argv[1]
 		print(sys.argv)
-		response = requests.get(url)
+		response = requests.get(param_url)
 		print(response.text)
 		datas = json.load(response.text)
 		segmentfault = Download(datas["url"],datas["headers"],datas["cookie"])
