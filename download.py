@@ -24,7 +24,7 @@ class Download():
 		# print(os.path.split(self.api_file_url))
 		# print(os.path.basename(self.api_file_url))
 		#获取文件名 e6a59548da20bcf3.mp4?sign=05e6532286c697b10dbcac6761dcac83&t=5bee2e2d
-		#basename = self.getFile(self.api_file_url)
+		basename = self.getFile(self.api_file_url)
 		#获取?号的位置
 		# pos = basename.find('?')
 		#获取文件名
@@ -34,10 +34,10 @@ class Download():
 		# print(file_name)
 		temp_size = 0 #已经下载文件大小
 		res = requests.get(self.api_file_url, headers=self.headers)
-		file_name = self.get_file_name(self.api_file_url,res)
+		file_name = get_file_name(self.api_file_url,res)
 		chunk_size = 1024 #每次下载数据大小
 		total_size = int(res.headers.get("Content-Length"))
-		print(file_name)
+		 
 		if res.status_code ==200:
 			print('[文件大小]:%0.2f MB' %(total_size / chunk_size /1024)) #换算单位并打印
 			#保存下载文件
@@ -50,11 +50,13 @@ class Download():
 				        #############花哨的下载进度部分###############
 				        done = int(50 * temp_size / total_size)
 				        # 调用标准输出刷新命令行，看到\r 回车符了吧
-				        # 相当于把每一行重新刷新
+				        # 相当于把每一行重新刷新一遍
+				        sys.stdout.write("\r[%s%s] %d%%" % ('█' * done, ' ' * (50 - done), 100 * temp_size / total_size))
+				        sys.stdout.flush()
 			print()  # 避免上面\r 回车符，执行完后需要换行了，不然都在一行显示
 			end = time.time() #结束时间
 			print('全部下载完成!用时%.2f 秒' %(end-start))
-			self.upload2lanzous(basename,file_name,self.cookie)
+			self.upload2lanzous(file_name,file_name,self.cookie)
 		else:
 			print(res.status_code)
 		 
@@ -95,19 +97,19 @@ class Download():
 		
 		
 	def get_file_name(self,url, headers):
-	    filename = ''
-	    if 'Content-Disposition' in headers and headers['Content-Disposition']:
-	        disposition_split = headers['Content-Disposition'].split(';')
-	        if len(disposition_split) > 1:
-	            if disposition_split[1].strip().lower().startswith('filename='):
-	                file_name = disposition_split[1].split('=')
-	                if len(file_name) > 1:
-	                    filename = unquote(file_name[1])
-	    if not filename and os.path.basename(url):
-	        filename = os.path.basename(url).split("?")[0]
-	    if not filename:
-	        return time.time()
-	    return filename
+    filename = ''
+    if 'Content-Disposition' in headers and headers['Content-Disposition']:
+        disposition_split = headers['Content-Disposition'].split(';')
+        if len(disposition_split) > 1:
+            if disposition_split[1].strip().lower().startswith('filename='):
+                file_name = disposition_split[1].split('=')
+                if len(file_name) > 1:
+                    filename = unquote(file_name[1])
+    if not filename and os.path.basename(url):
+        filename = os.path.basename(url).split("?")[0]
+    if not filename:
+        return time.time()
+    return filename
 	
 
 	
