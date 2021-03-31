@@ -82,7 +82,7 @@ class Download():
 			"Content-Type": "application/x-www-form-urlencoded", 
 			"User-Agent":"Opera/9.80 (Windows NT 6.2; Win64; x64) Presto/2.12.388 Version/12.15",
 			"Cookie":cookie,
-			"Referer":"https://pan.lanzous.com",
+			"Referer":"https://pc.woozooo.com/mydisk.php",
 			"Accept-Language":"zh-CN,zh;q=0.9",
 			} 
 		# token是登陆后给的值，如果你的接口中头部不需要上传字段，就不用写，只要前面的就可以
