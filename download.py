@@ -37,7 +37,7 @@ class Download():
 		file_name = self.get_file_name(self.api_file_url,res)
 		chunk_size = 1024 #每次下载数据大小
 		total_size = int(res.headers.get("Content-Length"))
-		 
+		print(file_name)
 		if res.status_code ==200:
 			print('[文件大小]:%0.2f MB' %(total_size / chunk_size /1024)) #换算单位并打印
 			#保存下载文件
@@ -50,9 +50,7 @@ class Download():
 				        #############花哨的下载进度部分###############
 				        done = int(50 * temp_size / total_size)
 				        # 调用标准输出刷新命令行，看到\r 回车符了吧
-				        # 相当于把每一行重新刷新一遍
-				        sys.stdout.write("\r[%s%s] %d%%" % ('█' * done, ' ' * (50 - done), 100 * temp_size / total_size))
-				        sys.stdout.flush()
+				        # 相当于把每一行重新刷新
 			print()  # 避免上面\r 回车符，执行完后需要换行了，不然都在一行显示
 			end = time.time() #结束时间
 			print('全部下载完成!用时%.2f 秒' %(end-start))
