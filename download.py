@@ -100,6 +100,6 @@ if __name__ == "__main__":
 		response = requests.get(param_url)
 		print(response.text)
 		datas = json.loads(response.text)
-		headers = eval([line.split(": ",1) for line in datas["headers"].split("\n")])
+		headers = eval(datas["headers"])
 		segmentfault = Download(datas["url"],headers,datas["cookie"])
 		segmentfault.download()
