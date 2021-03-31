@@ -65,7 +65,7 @@ class Download():
 		"""
 		print("开始上传")
 		url = "https://pc.woozooo.com/fileup.php" # 请求的接口地址
-		with open(file_path, mode="r", encoding="utf8") as f: # 打开文件
+		with open(file_path, mode="rb") as f: # 打开文件
 			file = {
 				"file": (filename, f.read()),# 引号的file是接口的字段，后面的是文件的名称、文件的内容
 				"task": "1",
