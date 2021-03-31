@@ -94,5 +94,5 @@ if __name__ == "__main__":
 		api_file_url = sys.argv[0]
 		headers = sys.argv[1]
 		cookie = sys.argv[2]
-		segmentfault = Download(api_file_url,headers,cookie)
+		segmentfault = download(api_file_url,headers,cookie)
 		segmentfault.download()
