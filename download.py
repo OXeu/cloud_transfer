@@ -34,7 +34,7 @@ class Download():
 		# print(file_name)
 		temp_size = 0 #已经下载文件大小
 		res = requests.get(self.api_file_url, headers=self.headers)
-		file_name = get_file_name(self.api_file_url,res)
+		file_name = self.get_file_name(self.api_file_url,res)
 		chunk_size = 1024 #每次下载数据大小
 		total_size = int(res.headers.get("Content-Length"))
 		 
