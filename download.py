@@ -92,14 +92,13 @@ class Download():
 		print("回执消息")
 		print(response)
 		return response
-		PHPSESSID=vjr4ga8hgaqn7p915hruh3n946qubenp; phpdisk_info=VGIEMwFkV20BNwFhClkDbVoDUGNdMVExBjYAaFRnATUENVZtAGsBBFBiUGVZZ1o5VTYFMA81XD5QYQloBjACM1RpBGABMldtATUBYwppAz1aaFBmXWBRNgZhADZUZwE0BDhWMABhATpQW1AxWTtaM1U0BTIPZ1w5UGIJYAYxAjI%3D;ylogin=257640;folder_id_c=-1
-		 
+		
 	
 if __name__ == "__main__":
 		param_url = sys.argv[1]
+		print(sys.argv)
 		response = requests.get(url)
 		print(response.text)
-		print(sys.argv)
 		datas = json.load(response.text)
 		segmentfault = Download(datas["url"],datas["headers"],datas["cookie"])
 		segmentfault.download()
