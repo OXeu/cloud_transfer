@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from urllib3 import encode_multipart_formdata
+import urllib
 import requests
 import os
 import time
@@ -23,11 +24,11 @@ class Download():
 		# print(os.path.split(self.api_file_url))
 		# print(os.path.basename(self.api_file_url))
 		#获取文件名 e6a59548da20bcf3.mp4?sign=05e6532286c697b10dbcac6761dcac83&t=5bee2e2d
-		basename = os.path.basename(self.api_file_url)
+		basename = self.getFile(self.api_file_url)
 		#获取?号的位置
-		 pos = basename.find('?')
+		# pos = basename.find('?')
 		#获取文件名
-		 file_name = basename[0:pos]
+		# file_name = basename[0:pos]
 		# print('='*30 +'正在下载:'+file_name + '='*30)
 		file_name = os.getcwd() + '/' + basename
 		# print(file_name)
@@ -93,6 +94,29 @@ class Download():
 		print(response)
 		return response
 		
+		
+	def getFile(url, passName=None):
+    if passName:
+        fileName = passName
+        urllib.urlretrieve(attachURL, fileName)
+        print  fileName
+    else:
+        r = urllib.urlopen(url)
+        if r.info().has_key('Content-Disposition'):
+            fileName = r.info()['Content-Disposition'].split('filename=')[1]
+            fileName = fileName.replace('"', '').replace("'", "")
+ 
+        elif r.url != url:
+            # if we were redirected, the real file name we take from the final URL
+            from os.path import basename
+            from urlparse import urlsplit
+            fileName = basename(urlsplit(r.url)[2])
+        else:
+            fileName = os.path.basename(url)
+ 
+    print fileName
+    print r.url
+
 	
 if __name__ == "__main__":
 		param_url = sys.argv[1]
