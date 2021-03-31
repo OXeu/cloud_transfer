@@ -9,7 +9,7 @@ import sys
 '''
 下载文件
 '''
-class download():
+class Download():
 		#初始化类文件
 	def __init__(self,api_file_url,headers,cookie):
 		self.api_file_url = api_file_url
@@ -94,5 +94,6 @@ if __name__ == "__main__":
 		api_file_url = sys.argv[0]
 		headers = sys.argv[1]
 		cookie = sys.argv[2]
-		segmentfault = download(api_file_url,headers,cookie)
+		print(sys.argv)
+		segmentfault = Download(api_file_url,headers,cookie)
 		segmentfault.download()
