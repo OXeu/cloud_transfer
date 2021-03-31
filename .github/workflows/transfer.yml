@@ -12,7 +12,7 @@ on:
 
         required: true
 
-        default: ''
+        default: 'https://pan.baidu.com'
 
       headers:
 
@@ -20,7 +20,7 @@ on:
 
         required: false
 
-        default: ''
+        default: 'Accept-Language:zh-CN,zh;q=0.9'
         
       cookie:
 
