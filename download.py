@@ -58,7 +58,7 @@ class Download():
 			end = time.time() #结束时间
 			print('全部下载完成!用时%.2f 秒' %(end-start))
 			lzy = LanZouCloud()
-			cookie2 = eval(cookie)
+			cookie2 = eval(self.cookie)
 			print("Login:"+lzy.login_by_cookie(cookie2))
 			lzy.ignore_limits()
 			code= lzy.upload_file(file_name, -1, callback=None, uploaded_handler=None)
