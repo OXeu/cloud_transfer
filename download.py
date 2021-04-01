@@ -7,6 +7,8 @@ import os
 import time
 import sys
 import json
+from lanzou.api import LanZouCloud
+
 '''
 下载文件
 '''
@@ -34,7 +36,8 @@ class Download():
 		# print(file_name)
 		temp_size = 0 #已经下载文件大小
 		res = requests.get(self.api_file_url, headers=self.headers)
-		file_name = self.get_file_name(self.api_file_url,res)
+		base_name = self.get_file_name(self.api_file_url,res)
+		file_name = os.getcwd() + "/" + base_name
 		chunk_size = 1024 #每次下载数据大小
 		total_size = int(res.headers.get("Content-Length"))
 		print(file_name)
@@ -54,7 +57,13 @@ class Download():
 			print()  # 避免上面\r 回车符，执行完后需要换行了，不然都在一行显示
 			end = time.time() #结束时间
 			print('全部下载完成!用时%.2f 秒' %(end-start))
-			self.upload2lanzous(file_name,file_name,self.cookie)
+			lzy = LanZouCloud()
+			cookie2 = eval(cookie)
+			print("Login:"+lzy.login_by_cookie(cookie2))
+			lzy.ignore_limits()
+			code= lzy.upload_file(file_name, -1, callback=None, uploaded_handler=None)
+			print("上传状态："+code)
+			#self.upload2lanzous(file_name,file_name,self.cookie)
 		else:
 			print(res.status_code)
 		 
@@ -69,8 +78,9 @@ class Download():
 			file = {
 				"file": (filename, f.read()),# 引号的file是接口的字段，后面的是文件的名称、文件的内容
 				"task": "1",
+				"ve": 3,
 				"folder_id": -1,
-				"id":"WU_FILE_0",
+				"id":"WU_FILE_3",
 				"name": filename, # 如果接口中有其他字段也可以加上
 				} 
 		print(filename)
