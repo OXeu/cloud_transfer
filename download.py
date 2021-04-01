@@ -62,7 +62,8 @@ class Download():
 			print("Login:"+lzy.login_by_cookie(cookie2))
 			lzy.ignore_limits()
 			code= lzy.upload_file(file_name, -1, callback=None, uploaded_handler=None)
-			print("上传状态："+code)
+			print("上传状态：")
+			print(code)
 			#self.upload2lanzous(file_name,file_name,self.cookie)
 		else:
 			print(res.status_code)
