@@ -31,5 +31,5 @@ jobs:
        run: |
         pip install requests
         pip install urllib3
-        #pip install urllib
+        pip install lanzou-api
         python download.py ${{ github.event.inputs.url }}
