@@ -17,8 +17,8 @@
 下拉列表，点击 Developer settings
 ![Dev Settings](https://github.com/ThankRain/cloud_transfer/raw/master/image/dev_setting.png)
 
-点击 Personal acess token
-![Personal acess token](https://github.com/ThankRain/cloud_transfer/raw/master/image/personal_acess.png)
+点击 Personal access token
+![Personal access token](https://github.com/ThankRain/cloud_transfer/raw/master/image/personal_access.png)
 
 点击 Generate new token
 ![Generate new token](https://github.com/ThankRain/cloud_transfer/raw/master/image/generate.png)
