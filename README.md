@@ -7,9 +7,11 @@
 ## 食用方法
 ### Fork本仓库
 点击页面顶部的Fork按钮，创建一个分支
+![Fork](https://github.com/ThankRain/cloud_transfer/raw/master/image/fork.png=151x62)
+(建议将仓库设置为私有，否则可能有泄露网盘账户的风险)
 ### APP 内配置
 在 App 中填入您的 Github用户名(如 ThankRain) 、Fork仓库名（cloud_transfer）
-![用户名/仓库名](https://github.com/ThankRain/cloud_transfer/raw/master/image/username_repo.png)
+![用户名/仓库名](https://github.com/ThankRain/cloud_transfer/raw/master/image/username_repo.png=554x78)
 ## 鸣谢(排名不分先后)
 ### 阿里云盘上传脚本 - Pluto
 [https://github.com/Hidove/aliyundrive-uploader](https://github.com/Hidove/aliyundrive-uploader)
