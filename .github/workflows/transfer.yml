@@ -32,4 +32,6 @@ jobs:
         pip install requests
         pip install urllib3
         pip install lanzou-api
+        pip install -r aliyundrive\requirements.txt
         python download.py ${{ github.event.inputs.url }}
+

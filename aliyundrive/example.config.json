@@ -1,0 +1,14 @@
+{
+  "REFRESH_TOKEN": "refresh_token",
+  "DRIVE_ID": "drive_id",
+  "ROOT_PATH": "网盘目录",
+  "FILE_PATH": "D:\\Pictures\\",
+  "MULTITHREADING": false,
+  "MAX_WORKERS": 5,
+  "CHUNK_SIZE": 104857600,
+  "RESUME": false,
+  "OVERWRITE": false,
+  "RETRY": 0,
+  "RESIDENT": false,
+  "VERSIONS":"v2021.0804.1200"
+}
